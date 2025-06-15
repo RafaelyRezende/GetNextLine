@@ -39,12 +39,15 @@ int	ft_strlen(const char *line)
 	return (i);
 }
 
-int	ft_init(char **line, int *bytes_read)
+int	ft_init(char **line, int *bytes_read, char *buff)
 {
 	*line = malloc(1);
 	if (!line)
 		return (0);
 	**line = '\0';
+	*line = ft_strjoin(*line, buff);
+	if (*line == NULL)
+		return (free(*line), 0);
 	*bytes_read = 1;
 	return (1);
 }

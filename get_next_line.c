@@ -13,22 +13,35 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
+void	ft_bzero(char *buff)
+{
+	int	i;
+
+	i = 0;
+	while (buff[i])
+	{
+		buff[i] = '\0';
+		i++;
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 	int		bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || !ft_init(&line, &bytes_read))
+	if (fd < 0 || BUFFER_SIZE <= 0 || !ft_init(&line, &bytes_read, buffer))
 		return (NULL);
-	line = ft_strjoin(line, buffer);
-	if (!line)
-		return (free(line), NULL);
 	while (bytes_read && !ft_is_nl(&buffer[0]))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1 || (bytes_read == 0 && !*line))
+		{
+			if (bytes_read == -1)
+				ft_bzero(buffer);
 			return (free(line), NULL);
+		}
 		if (bytes_read != 0)
 		{
 			ft_verify(bytes_read, buffer);

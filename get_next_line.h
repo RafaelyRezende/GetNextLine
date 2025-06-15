@@ -25,7 +25,7 @@ int	ft_is_nl(char *buff);
 char	*get_next_line(int fd);
 int	ft_strlen(const char *line);
 void	ft_offset(char *buff);
-int	ft_init(char **line, int *bytes_read);
+int	ft_init(char **line, int *bytes_read, char *buff);
 char	*ft_strjoin(char *s1, char *s2);
 void	ft_verify(int br, char *buff);
 
