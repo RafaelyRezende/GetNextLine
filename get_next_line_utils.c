@@ -42,7 +42,7 @@ int	ft_strlen(const char *line)
 int	ft_init(char **line, int *bytes_read, char *buff)
 {
 	*line = malloc(1);
-	if (!line)
+	if (!*line)
 		return (0);
 	**line = '\0';
 	if (*buff != '\0')
