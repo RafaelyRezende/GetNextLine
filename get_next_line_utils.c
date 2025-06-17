@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 int	ft_is_nl(char *buff)
 {
@@ -62,7 +61,6 @@ void	ft_offset(char *buff)
 	flag = 0;
 	i = 0;
 	j = 0;
-
 	while (buff[i])
 	{
 		if (buff[i] == '\n' && !flag)
@@ -82,8 +80,8 @@ void	ft_offset(char *buff)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	len;
-	char		*ptr;
+	int		len;
+	char	*ptr;
 	int		i;
 	int		j;
 
@@ -92,8 +90,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	len = ft_strlen(s2) + ft_strlen(s1);
 	ptr = (char *)malloc(sizeof(char) * len + 1);
 	if (!ptr)
-		return (free(s1),NULL);
-	while (s1[i]) 
+		return (free(s1), NULL);
+	while (s1[i])
 	{
 		ptr[i] = s1[i];
 		i++;
@@ -106,21 +104,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	ptr[i + j] = '\0';
 	free(s1);
 	return (ptr);
-}
-
-void	ft_verify(int br, char *buff)
-{
-	int	i;
-
-	i = 0;
-	if (br <= BUFFER_SIZE)
-	{
-		while (i < br)
-			i++;
-		while (buff[i])
-		{
-			buff[i] = '\0';
-			i++;
-		}
-	}
 }

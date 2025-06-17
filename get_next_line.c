@@ -6,14 +6,13 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 21:22:08 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/06/13 18:31:37 by jcesar-s         ###   ########.fr       */
+/*   Updated: 2025/06/13 18:31:37 by rluis-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-void	ft_bzero(char *buff)
+static void	ft_bzero(char *buff)
 {
 	int	i;
 
@@ -25,11 +24,28 @@ void	ft_bzero(char *buff)
 	}
 }
 
+static void	ft_verify(int br, char *buff)
+{
+	int	i;
+
+	i = 0;
+	if (br <= BUFFER_SIZE)
+	{
+		while (i < br)
+			i++;
+		while (buff[i])
+		{
+			buff[i] = '\0';
+			i++;
+		}
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
-	int		bytes_read;
+	int			bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || !ft_init(&line, &bytes_read, buffer))
 		return (NULL);
@@ -47,7 +63,7 @@ char	*get_next_line(int fd)
 			ft_verify(bytes_read, buffer);
 			line = ft_strjoin(line, buffer);
 			if (!line)
-				return (free(line),NULL);
+				return (free(line), NULL);
 		}
 	}
 	ft_offset(buffer);
