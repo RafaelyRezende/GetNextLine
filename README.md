@@ -1,6 +1,9 @@
 # Get Next Line (get_next_line)
 
 ![Grade](https://img.shields.io/badge/Grade-125%25-brightgreen)
+![Bonus](https://img.shields.io/badge/Bonus-Complete-brightgreen)
+![42 Project](https://img.shields.io/badge/42_Project-get_next_line-00babc?)
+![Language](https://img.shields.io/badge/Language-C-blue)
 
 ## Project Overview
 
